@@ -4,7 +4,7 @@
   yum:
     state: present
     name:
-      - epel
+      - epel-release
       - centos-release-scl
   when: >  # not for Fedora
     ansible_distribution == 'CentOS' or
