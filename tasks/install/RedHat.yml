@@ -1,7 +1,11 @@
 ---
 
-- name: install EPEL repository
-  yum: name=epel-release state=present
+- name: install EPEL & SCL repository
+  yum:
+    state: present
+    name:
+      - epel
+      - centos-release-scl
   when: >  # not for Fedora
     ansible_distribution == 'CentOS' or
     ansible_distribution == 'Red Hat Enterprise Linux'
