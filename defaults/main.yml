@@ -83,3 +83,12 @@ postgres_server_auto_explain_log_min_duration: -1
 
 # Whether or not to use EXPLAIN ANALYZE.
 postgres_server_auto_explain_log_analyze: true
+
+# Whether or not to enable SSL in the server.
+postgres_server_ssl_enable: false
+
+# Path to SSL server certificate file.
+postgres_server_ssl_cert_file: null
+
+# Path to SSL server key file.
+postgres_server_ssl_key_file: null

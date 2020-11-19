@@ -61,6 +61,25 @@
     - postgresql.conf
   notify: restart postgres
 
+- name: copy SSL configuration if necessary
+  copy:
+    src: "{{ postgres_server_item.src }}"
+    dest: "{{ postgres_server_item.dest }}"
+    remote_src: true
+    owner: postgres
+    group: postgres
+    mode: "u=r,go="
+  when: postgres_server_item.src
+  loop_control:
+    loop_var: postgres_server_item
+  loop:
+    - src: "{{ postgres_server_ssl_cert_file }}"
+      dest: "{{ postgres_server_config_location }}/server.crt"
+    - src: "{{ postgres_server_ssl_key_file }}"
+      dest: "{{ postgres_server_config_location }}/server.key"
+  notify: restart postgres
+
+
 - name: start and enable postgres server
   systemd: name={{ postgres_server_service_name }} state=started enabled=yes
 #   ignore_errors: true
