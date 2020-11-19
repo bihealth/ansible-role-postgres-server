@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.3
+
+- Exposing SSL config values.
+
 ## v0.3.2
 
 - Fixing package name bug.
